@@ -30,13 +30,12 @@ xx <- seq(0,x[length(x)], length.out=250)
 lines(xx, predict(fit1, data.frame(x=xx)), lwd=2, col='blue')
 lines(xx, predict(fit2, data.frame(x=xx)), lwd=2, col='green')
 lines(xx, predict(fit3, data.frame(x=xx)), lwd=2, col='red')
-lines(xx, predict(fit4, data.frame(x=xx)), lwd=2, col='purple')
 lines(xx, predict(fit5, data.frame(x=xx)), lwd=2, col='orange')
 lines(xx, predict(fit6, data.frame(x=xx)), lwd=2, col='grey')
 
 par(mar=c(4,7,4,2)+0.1,mgp=c(5,1,0))
 plot(x, y, xlim=c(0,x[length(x)]*10), ylim=c(0,y[length(y)]*10), pch=19,
-     main="Número de tuits emitidos", xaxt="n", yaxt="n",
+     main="Número de tuits emitidos (proyección)", xaxt="n", yaxt="n",
      ylab="tweet ID", xlab="")
 
 x_labels = c("2006", "2010", "2014", "2018", "2022", "2026", "2030", 
@@ -51,7 +50,7 @@ xx <- seq(0,x[length(x)]*10, length.out=250)
 lines(xx, predict(fit1, data.frame(x=xx)), lwd=2, col='blue')
 lines(xx, predict(fit2, data.frame(x=xx)), lwd=2, col='green')
 lines(xx, predict(fit3, data.frame(x=xx)), lwd=2, col='red')
-lines(xx, predict(fit4, data.frame(x=xx)), lwd=2, col='purple')
 lines(xx, predict(fit5, data.frame(x=xx)), lwd=2, col='orange')
 lines(xx, predict(fit6, data.frame(x=xx)), lwd=2, col='grey')
-
+abline(h=4e+18, lty=3)
+abline(v=440000000, lty=3)
