@@ -5,6 +5,8 @@ data <- read.csv("output_r.csv", header=F)
 names(data) <- c("x", "y")
 attach(data)
 
+x_labels = c("2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014")
+
 # http://stackoverflow.com/a/3824248
 fit1 <- lm( y~offset(x) -1 )
 fit2 <- lm( y~x )
@@ -15,7 +17,8 @@ fit6 <- lm( y~ns(x, 9) )
 
 
 
-plot(x, y, xlim=c(0,x[length(x)]), ylim=c(0,y[length(y)]), pch=19)
+plot(x, y, xlim=c(0,x[length(x)]), ylim=c(0,y[length(y)]), pch=19, xaxt="n")
+axis(1, at=seq.int(0, x[15], x[15]/8), labels=x_labels)
 
 xx <- seq(0,x[length(x)], length.out=250)
 lines(xx, predict(fit1, data.frame(x=xx)), lwd=2, col='blue')

@@ -21,8 +21,8 @@ with open("output.csv", "r") as filename:
         print int(time.mktime(date.timetuple()) - start_timestamp), tweet_id
 
         x_axis.append(date)
-        #y_axis.append(float(tweet_id))
-        y_axis.append(math.log(float(tweet_id)))
+        y_axis.append(float(tweet_id))
+        #y_axis.append(math.log(float(tweet_id)))
 
 # queremos color
 set2 = brewer2mpl.get_map('Set2', 'qualitative', 8).mpl_colors
