@@ -1,6 +1,8 @@
 library("fitdistrplus")
 library("splines")
 
+
+
 data <- read.csv("output_r.csv", header=F)
 names(data) <- c("x", "y")
 attach(data)
@@ -17,8 +19,9 @@ fit5 <- lm( y~ns(x, 3) )
 fit6 <- lm( y~ns(x, 9) )
 
 
-
-plot(x, y, xlim=c(0,x[length(x)]), ylim=c(0,y[length(y)]), pch=19, xaxt="n", yaxt="n")
+par(mar=c(6,9,4,2)+0.1,mgp=c(7,1,0))
+plot(x, y, xlim=c(0,x[length(x)]), ylim=c(0,y[length(y)]), pch=19, xaxt="n", yaxt="n",
+     ylab="tweet ID", xlab="")
 axis(1, at=seq.int(0, x[15], x[15]/8), labels=x_labels)
 axis(2, at=seq.int(0, 4e+17, 1e+17), labels=y_labels, las=1)
 
