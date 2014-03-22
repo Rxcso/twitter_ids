@@ -1,5 +1,6 @@
 library("fitdistrplus")
 library("splines")
+library("Hmisc")
 
 
 
@@ -21,7 +22,7 @@ fit6 <- lm( y~ns(x, 9) )
 
 par(mar=c(6,9,4,2)+0.1,mgp=c(7,1,0))
 plot(x, y, xlim=c(0,x[length(x)]), ylim=c(0,y[length(y)]), pch=19, xaxt="n", yaxt="n",
-     ylab="tweet ID", xlab="", main="Crecimiento del tweet_id en el tiempo")
+     ylab="tweet ID", xlab="", main="Número de tuits emitidos")
 axis(1, at=seq.int(0, x[15], x[15]/8), labels=x_labels)
 axis(2, at=seq.int(0, 4e+17, 1e+17), labels=y_labels, las=1)
 
@@ -33,8 +34,18 @@ lines(xx, predict(fit4, data.frame(x=xx)), lwd=2, col='purple')
 lines(xx, predict(fit5, data.frame(x=xx)), lwd=2, col='orange')
 lines(xx, predict(fit6, data.frame(x=xx)), lwd=2, col='grey')
 
+par(mar=c(4,7,4,2)+0.1,mgp=c(5,1,0))
+plot(x, y, xlim=c(0,x[length(x)]*10), ylim=c(0,y[length(y)]*10), pch=19,
+     main="Número de tuits emitidos", xaxt="n", yaxt="n",
+     ylab="tweet ID", xlab="")
 
-plot(x, y, xlim=c(0,x[length(x)]*10), ylim=c(0,y[length(y)]*10), pch=19)
+x_labels = c("2006", "2010", "2014", "2018", "2022", "2026", "2030", 
+             "2034", "2038", "2042", "2046", "2050", "2054", "2058", 
+             "2062", "2066", "2070", "2074", "2078", "2082", "2084")
+y_labels = c("20", "1 trillón","2 trillones","3 trillones","4 trillones")
+axis(1, at=seq.int(0, 2522016000, 252201600/2), labels=x_labels, las=2)
+axis(2, at=seq.int(0, 4e+18, 1e+18), labels=y_labels, las=1)
+
 
 xx <- seq(0,x[length(x)]*10, length.out=250)
 lines(xx, predict(fit1, data.frame(x=xx)), lwd=2, col='blue')
@@ -43,5 +54,4 @@ lines(xx, predict(fit3, data.frame(x=xx)), lwd=2, col='red')
 lines(xx, predict(fit4, data.frame(x=xx)), lwd=2, col='purple')
 lines(xx, predict(fit5, data.frame(x=xx)), lwd=2, col='orange')
 lines(xx, predict(fit6, data.frame(x=xx)), lwd=2, col='grey')
-
 
